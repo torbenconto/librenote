@@ -6,22 +6,31 @@
 #define EDITOR_H
 
 #include <gtkmm/box.h>
+#include <gtkmm/button.h>
+#include <gtkmm/cssprovider.h>
 #include <gtkmm/notebook.h>
 #include <gtkmm/textview.h>
 
+struct Tab {
+    std::string file_path;
+    Glib::RefPtr<Gtk::TextBuffer> text_buffer;
+    Gtk::Widget* parent;
+};
 
-class Editor : public Gtk::Box{
+class Editor : public Gtk::Box {
 public:
     Editor();
     ~Editor() override;
 
-    void load_file(const std::string& file_path);
     void save_file(const std::string& file_path);
+    void open_new_tab(const std::string& file_path);
 protected:
     Gtk::TextView text_view_;
-    Glib::RefPtr<Gtk::TextBuffer> text_buffer_;
+    std::map<int, Tab> tabs_;
+    Gtk::Notebook notebook_;
 private:
-    void show_error_dialog(const std::string& message);
+    void on_switch_page(Gtk::Widget* page, guint page_num);
+    void on_tab_close_button_clicked(int page_num);
 };
 
 

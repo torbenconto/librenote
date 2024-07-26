@@ -5,7 +5,7 @@
 #include "window.h"
 
 #include <iostream>
-#include <gtkmm/box.h>
+#include <gtkmm/messagedialog.h>
 #include <gtkmm/paned.h>
 
 
@@ -40,5 +40,5 @@ Window::~Window() = default;
 
 void Window::on_file_selected(const std::string& file_path) {
     std::cout << "File selected: " << file_path << std::endl;
-    editor_.load_file(file_path);
+    editor_.open_new_tab(file_path);
 }

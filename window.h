@@ -11,7 +11,6 @@
 #include "editor.h"
 #include "explorer.h"
 
-
 class Window : public Gtk::Window {
 public:
     Window();
