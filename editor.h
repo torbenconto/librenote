@@ -27,7 +27,7 @@ public:
 
     void save_file(const std::string& file_path);
     void open_new_tab(const std::string& file_path);
-    void set_font_size(int size);  // New method to set font size
+    void set_font_size(int size);
 
 protected:
     Gtk::TextView text_view_;

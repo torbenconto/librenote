@@ -66,6 +66,10 @@ void Editor::open_new_tab(const std::string& file_path) {
     Gtk::TextView* text_view = Gtk::manage(new Gtk::TextView());
     Glib::RefPtr<Gtk::TextBuffer> text_buffer = Gtk::TextBuffer::create();
     text_view->set_buffer(text_buffer);
+    text_view->set_top_margin(5);
+    text_view->set_bottom_margin(5);
+    text_view->set_left_margin(5);
+    text_view->set_right_margin(5);
 
     // Apply the font size to the new text view
     Pango::FontDescription font_desc;
@@ -128,6 +132,7 @@ bool Editor::on_key_press_event(GdkEventKey* event) {
         save_current_tab();
         return true;
     }
+
     return Gtk::Box::on_key_press_event(event);
 }
 
